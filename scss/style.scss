@@ -1,0 +1,388 @@
+#root {
+  #mainArea {
+    #gameArea {
+      #endMessage {
+          display: none;
+      }
+    }    
+  }
+}
+
+p {
+  margin: 10px;
+}
+
+@mixin gradient($color1: #fff, $color2: #ccc) {
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from($color2), to($color1));
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(top, $color1, $color2);
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(top, $color1, $color2);
+  /* IE 10 */
+  background: -ms-linear-gradient(top, $color1, $color2);
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(top, $color1, $color2);
+  /* standard */
+  background: linear-gradient(to bottom, $color1, $color2);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$color1, endColorstr=$color2,GradientType=0 ); /* IE6-9 */
+}
+
+body {
+  background: #c90d46;
+}
+
+#root {
+  position: relative;
+  //max-width: 540px;
+  background: #c90d46;
+  padding: 10px;
+  #mainArea {
+    clear: both;
+    position: relative;
+    outline: solid 2px green;
+    background: #FFF550;
+    background: #fff550;
+    background: -moz-linear-gradient(top, #fff550 0%, #ffffe0 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff550), color-stop(100%, #ffffe0));
+    background: -webkit-linear-gradient(top, #fff550 0%, #ffffe0 100%);
+    background: -o-linear-gradient(top, #fff550 0%, #ffffe0 100%);
+    background: -ms-linear-gradient(top, #fff550 0%, #ffffe0 100%);
+    background: linear-gradient(to bottom, #fff550 0%, #ffffe0 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff550', endColorstr='#ffffe0', GradientType=0);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  #header {
+    h1 {
+      font-weight: bold;
+      color: #550000;
+      text-align: center;
+      margin: 0 auto;
+    }   
+  }
+    #input {
+        .button {
+            margin-bottom: 0;
+        margin-left: 5px;
+        margin-top: 0;
+      }
+  }
+  .clear {
+      clear: both;
+  }
+  #instructions {
+      h2 {
+        color: #444;
+        margin-left: 10px;
+      }
+  }
+}
+#numOfTries table td,#googleAd1,#googleAd2,table#numOfTries td {
+  border: 2px solid green;
+}
+
+#root button,#root #nextWord,#root #send,#root #playAgain {
+   
+  @include gradient( #00ff00, #008000);
+  border: none;
+  color: #ffffff;
+  padding: 10px 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5), inset 0px 0px 2px rgba(255, 255, 255, 0.7);
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5), inset 0px 0px 2px rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5), inset 0px 0px 2px rgba(255, 255, 255, 0.7);
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4), 0px 1px 0px rgba(255, 255, 255, 0.3);
+  border-style: none;
+  margin: 10px 0px 20px 0px;
+  cursor: pointer;
+  
+  &.here{
+    @include gradient(  #ff7b00, #801b00)
+  }
+  
+}
+#contact .success,#contact .myerror,#contact .sending {
+  display: none;
+}
+textarea {
+  margin-left: 10px;
+}
+.here {
+  color: #fff550;
+}
+.small {
+  font-size: 11px;
+}
+    
+.slide-out-div {
+  padding: 20px;
+  width: 250px;
+  background: #ccc;
+  border: #29216d 1px solid;
+}
+
+#mainArea{
+  overflow:hidden;
+}
+
+li{
+ /* float:left;
+  list-style:none; */
+}
+
+#shield{
+  height:100px;
+  margin-top:10px;
+}
+
+#inputTable button{
+  font-size:1.5em;
+  padding:10px 1px;
+}
+
+#game button {
+  margin-left: 10px;
+  @media (min-width:540px) {
+  }
+}
+
+#inputTable td{
+  padding-top:10px;
+  text-align:center;
+}
+
+#contentWrapper {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+#game {
+  padding: 0;
+  table {
+    border-collapse: separate;
+    border-spacing: 2px;
+  }
+  #endMessage {
+    display: none;
+  }
+  p.announcement {
+    margin-top: 0px;
+    margin-bottom: 3px;
+    padding-top: 15px;
+  }
+  #expression {
+    font-size: 30px;
+    table {
+      margin-left: 10px;
+      td {
+        background: none repeat scroll 0 0 #FFFFFF;
+        height: 40px;
+        width: 30px;
+        max-width: 27px;
+        @media (min-width:450px) {
+        width: 45px;
+        max-width: 45px;      
+        }  
+        text-align: center;
+        border:solid 2px transparent;
+        &.here{
+        border:solid 2px #008000;
+        color:black;
+        }
+      }
+      input {
+        max-width: 20px;
+        @media (min-width: 450px) {
+          max-width: 36px;
+        }
+        line-height: 2em;
+      }
+      .row3 {
+        td {
+          height: 10px;
+          background: none;
+          input {
+            height: 27px;
+            vertical-align: top;
+            width: 40px;
+          }
+        }
+      }
+    }
+    .row2 {
+      font-size: 16px;
+    }
+  }
+  input#nextWord {
+    margin: 10px 0 0 13px;
+    display: none;
+  }
+  #input {
+    input {
+      margin: 10px 0 0 13px;
+      display: none;
+    }  
+  }
+  #inEnglish {
+    clear: both;
+    p {
+      margin: 10px 0 0 10px;
+    }
+  }
+  #numOfTries {
+    margin: 5px;
+    float: right;
+    p {
+      float: left;
+    }
+    td {
+      width: 20px;
+      height: 20px;
+      background: #ffffff;
+      font-size: 16px;
+      height: 22px;
+      width: 37px;
+      text-align: center;
+    }
+  }
+  #deckOfSyllables {
+    float: left;
+    .small {
+      margin: 0;
+      margin-left: 33px;
+    }
+    .card {
+      margin-left: 20px;
+    }
+  }
+  
+  #keyboard{
+    #expressionNav{
+      width:140px;
+      margin:5px auto;
+      padding:0px 0;
+      font-size:18px;
+      .back{
+        float:left;
+      }
+      .forward{
+        float:right;
+      }
+    }
+  }
+
+  p#formTitle {
+    clear: left;
+    margin-left: 14px;
+    margin-top: 2px;
+    margin-bottom: 0;
+  }
+  .card {
+    img {
+      cursor: pointer;
+    }
+    .hiragana {
+      text-align: center;
+    }
+    .romaji {
+      bottom: 0;
+      position: absolute;
+      right: 10px;
+      text-align: right;
+    }
+    p {
+    margin: 0;
+    }
+  }
+  #formInput {
+    bottom: 12px;
+  }
+  .overlay {
+    position: absolute;
+    font-size: 120px;
+    background: white;
+    border: 20px solid green;
+    float: left;
+    text-align: center;
+    top: 90px;
+    left: 102px;
+    padding: 20px;
+    visibility: hidden;
+  }
+  .overlay.correct {
+    color: green;
+    border: 20px solid green;
+  }
+  .overlay.wrong {
+    color: red;
+    border: 20px solid red;
+  }
+  #deckNav {
+    margin: 6px auto;
+    width: 134px;
+    height: 37px;
+    .back {
+    cursor: pointer;
+    }
+    p.small {
+    text-align: center;
+    margin: 0;
+    }
+    .forward {
+    margin-left: 14px;
+    cursor: pointer;
+    }
+  }
+   
+}
+
+#recentCards {
+  position: relative;
+  width: 240px;
+  margin: 0 auto;
+  @media (min-width:540px) {
+    width: 318px;
+  }
+  p {
+    margin:0;
+    @media (min-width:540px) {
+      margin: auto;
+    }
+  }
+  p.small {
+    text-align: right;
+  }
+  div.card {
+    float: left;
+    margin: 3px;
+    height: 68px;
+    width: 49px;
+    @media (min-width:540px) {   
+      height: 96px;
+      width: 71px;
+    }
+    border: solid 1px black;
+    background: #fff;
+    position: relative;
+  }
+  .card.first {
+    margin-bottom: 5px;
+  }
+  .card {
+    cursor: pointer;
+    p.hiragana {
+      margin-top: 0px;
+      font-size: 32px;
+      @media (min-width:540px) {
+        font-size: 37px;
+        margin-top: 20px;
+      }
+    }
+  }
+}
+
+@import 'modal';
+@import 'nav';
