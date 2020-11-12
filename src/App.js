@@ -7,13 +7,13 @@ import "./css/style.css"
 
 function App() {
   return (
-    <Router>
+    <Router >
       <Fragment>
         <div id="mainArea">
           <Navigation/>
           <div id="contentWrapper">
-            <Route path='/' exact component={GameBoard} />
-            <Route path='/instructions' exact >
+            <Route path={`${process.env.PUBLIC_URL}/`} exact component={GameBoard} />
+            <Route path={`${process.env.PUBLIC_URL}/instructions`} exact >
               <div id='instructions'>
               <h2>Instructions</h2>
                 <p>In each round of the game a Japanese word is provided in hiragana. The object of the game is to enter the correct romaji for each character. In each round you have three guesses. Clue cards are provided in case you don't remember the romaji for a character. But the less you have to reference the deck of clues the better.</p> 
@@ -25,7 +25,7 @@ function App() {
                 <br /><br />
               </div>
             </Route>
-            <Route path='/links' exact> 
+            <Route path={`${process.env.PUBLIC_URL}/links`} exact> 
               <div id='links'>
                 <br />
                 <p>This game was help put together by referencing information from:</p> 

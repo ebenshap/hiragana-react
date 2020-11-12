@@ -19,9 +19,9 @@ export default function Navigation() {
         </header>
         <nav>
           <ul className="nav-ul hide-ul">
-            <li><NavLink className="nav-link" to="/" exact activeClassName='active-link' >Home</NavLink></li>
-            <li><NavLink className="nav-link" to="instructions" exact activeClassName='active-link' >Instructions</NavLink></li>
-            <li><NavLink className="nav-link" to="links" exact activeClassName='active-link' >Links</NavLink></li>
+            <li><NavLink className="nav-link" to={`${process.env.PUBLIC_URL}/`} exact activeClassName='active-link' >Home</NavLink></li>
+            <li><NavLink className="nav-link" to={`${process.env.PUBLIC_URL}/instructions`} exact  activeClassName='active-link' >Instructions</NavLink></li>
+            <li><NavLink className="nav-link" to={`${process.env.PUBLIC_URL}/links`} exact activeClassName='active-link' >Links</NavLink></li>
           </ul>
         </nav>
       </div>

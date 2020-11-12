@@ -54,5 +54,5 @@ var japaneseExpressionList = [
 ];
 
 export default function () {
-  return shuffle (japaneseExpressionList).slice(0, 3);
+  return shuffle (japaneseExpressionList).slice(0, 20);
 }
