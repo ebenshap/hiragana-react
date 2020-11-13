@@ -2,7 +2,8 @@
 // https://github.com/awulkan/FlexNav
 
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import history from '../history';
+
 
 function myFunction() {
   var navButton = document.querySelector("#nav-menu-button");
@@ -10,7 +11,49 @@ function myFunction() {
   navUl.classList.toggle("hide-ul");
 }
 
-export default function Navigation() {
+function getPageName(pathname) {
+  let pageName = pathname.replace( process.env.PUBLIC_URL, "" );
+  pageName = pageName.replace(/^\//, '');
+  pageName = pageName.split("/")[0].split("?")[0].split("#")[0];
+  if(pageName === ""){
+    pageName = "game";
+  }
+  return pageName;
+}
+
+
+export default class Navigation extends React.Component {
+  
+  state={
+    page:"game"
+  }
+
+  componentDidMount() {
+    history.listen((obj, type) => {
+      let pageName = getPageName(obj.pathname);
+      if(type === "POP") {
+        this.setPage(pageName, 1)
+      }
+    });
+    let pageName = getPageName(window.location.pathname);
+    this.setPage(pageName, 1);
+  }
+
+  setPage = (page, skipPush) => {
+    this.setState({ page })
+    this.props.setPage(page)
+    if(page === "game") {
+      page = process.env.PUBLIC_URL;
+    } else {
+      page = process.env.PUBLIC_URL + "/" + page;
+    }
+    if(!skipPush) {
+      history.push(page)
+    }
+  }
+
+
+  render () {
     return <div id="nav-background">
       <div id="nav-container">
         <header id="nav-header">
@@ -19,18 +62,12 @@ export default function Navigation() {
         </header>
         <nav>
           <ul className="nav-ul hide-ul">
-            <li><NavLink className="nav-link" to={`${process.env.PUBLIC_URL}/`} exact activeClassName='active-link' >Home</NavLink></li>
-            <li><NavLink className="nav-link" to={`${process.env.PUBLIC_URL}/instructions`} exact  activeClassName='active-link' >Instructions</NavLink></li>
-            <li><NavLink className="nav-link" to={`${process.env.PUBLIC_URL}/links`} exact activeClassName='active-link' >Links</NavLink></li>
+            <li className={`nav-link ${ this.state.page == "game" ? "active-link" :""  }`} onClick={()=>{ this.setPage("game")}} >Home</li>
+            <li className={`nav-link ${ this.state.page == "instructions" ? "active-link" :""  }`} onClick={()=>{ this.setPage("instructions")}} >Instructions</li>
+            <li className={`nav-link ${ this.state.page == "links" ? "active-link" :""  }`} onClick={()=>{ this.setPage("links")}} >Links</li>
           </ul>
         </nav>
       </div>
     </div>
-    /*<div className="topnav" id="myTopnav">
-    <a href="#play" className="active">Play</a>
-    <a href="#instructions">Instructions</a>
-    <a href="#contact">Contact</a>
-    <a href="#link">Link</a>
-    <button style={{fontSize:"15px"}} className="icon" onClick={myFunction}>&#9776;</button>
-  </div> */
+  }
 }

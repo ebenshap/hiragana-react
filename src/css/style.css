@@ -431,6 +431,7 @@ body {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
+  cursor: pointer;
   flex: 1;
   color: #444;
   text-decoration: none;
