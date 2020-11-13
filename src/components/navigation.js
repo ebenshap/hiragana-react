@@ -29,29 +29,27 @@ export default class Navigation extends React.Component {
   }
 
   componentDidMount() {
-    history.listen((obj, type) => {
-      let pageName = getPageName(obj.pathname);
-      if(type === "POP") {
-        this.setPage(pageName, 1)
-      }
+    history.listen(() => {
+      let pageName = getPageName(window.location.pathname);
+      this.setPage(pageName);
     });
     let pageName = getPageName(window.location.pathname);
-    this.setPage(pageName, 1);
+    this.setPage(pageName);
   }
 
   setPage = (page, skipPush) => {
     this.setState({ page })
     this.props.setPage(page)
+  }
+
+  updateHistory = (page) => {
     if(page === "game") {
       page = process.env.PUBLIC_URL;
     } else {
       page = process.env.PUBLIC_URL + "/" + page;
     }
-    if(!skipPush) {
-      history.push(page)
-    }
+    history.push(page);
   }
-
 
   render () {
     return <div id="nav-background">
@@ -62,9 +60,9 @@ export default class Navigation extends React.Component {
         </header>
         <nav>
           <ul className="nav-ul hide-ul">
-            <li className={`nav-link ${ this.state.page == "game" ? "active-link" :""  }`} onClick={()=>{ this.setPage("game")}} >Home</li>
-            <li className={`nav-link ${ this.state.page == "instructions" ? "active-link" :""  }`} onClick={()=>{ this.setPage("instructions")}} >Instructions</li>
-            <li className={`nav-link ${ this.state.page == "links" ? "active-link" :""  }`} onClick={()=>{ this.setPage("links")}} >Links</li>
+            <li className={`nav-link ${ this.state.page == "game" ? "active-link" :""  }`} onClick={()=>{ this.updateHistory("game")}} >Home</li>
+            <li className={`nav-link ${ this.state.page == "instructions" ? "active-link" :""  }`} onClick={()=>{ this.updateHistory("instructions")}} >Instructions</li>
+            <li className={`nav-link ${ this.state.page == "links" ? "active-link" :""  }`} onClick={()=>{ this.updateHistory("links")}} >Links</li>
           </ul>
         </nav>
       </div>
